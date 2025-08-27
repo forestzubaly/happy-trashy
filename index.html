@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Trashy</title>
+  <!-- Baloo Bhaijaan 2 for fun, blocky text -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #6c0f98;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: #fff;
+    }
+
+    /* 3-column grid: tagline | logo | email */
+    body {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      justify-items: center;
+      column-gap: 56px;
+      min-height: 100vh;
+    }
+
+    .logo {
+      grid-column: 2;
+      width: clamp(280px, 36vw, 520px);  /* responsive size */
+      height: auto;
+      display: block;
+    }
+
+    .side-text {
+      font-family: 'Baloo Bhaijaan 2', system-ui, sans-serif;
+      color: var(--brand);
+      font-size: clamp(18px, 2.2vw, 28px);
+      line-height: 1.35;
+      text-align: center;
+    }
+
+    .tagline {
+      grid-column: 1;
+      justify-self: end;
+      text-transform: lowercase;
+    }
+
+    .email {
+      grid-column: 3;
+      justify-self: start;
+    }
+
+    .email a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+    .email a:hover { text-decoration: underline; }
+
+    /* Stack vertically on small screens */
+    @media (max-width: 700px) {
+      body { grid-template-columns: 1fr; row-gap: 20px; }
+      .tagline, .email { grid-column: 1; justify-self: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Left side tagline -->
+  <div class="side-text tagline">
+    true luxury trash valet<br>
+    for the treasure valley
+  </div>
+
+  <!-- Center animated logo -->
+  <picture class="logo">
+    <!-- Prefer WebP (smaller) -->
+    <source srcset="logovid.webp" type="image/webp">
+    <!-- Fallback: looping video -->
+    <video autoplay loop muted playsinline class="logo">
+      <source src="logovid.mp4" type="video/mp4">
+      Your browser does not support animated logos.
+    </video>
+  </picture>
+
+  <!-- Right side email -->
+  <div class="side-text email">
+    <a href="mailto:forest@happytrashy.com">forest@happytrashy.com</a>
+  </div>
+</body>
+</html>
