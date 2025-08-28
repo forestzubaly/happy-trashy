@@ -3,17 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <title>Happy Trashy</title>
-  <!-- Baloo Bhaijaan 2 for fun, blocky text -->
+
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2&display=swap" rel="stylesheet">
+
+  <!-- Favicons (with cache-busting & legacy support) -->
+  <link rel="icon" href="favicon.ico?v=2" sizes="any">
+  <link rel="shortcut icon" href="favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=2">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
+  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png?v=2">
+  <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png?v=2">
+
+  <!-- Optional: theme color for mobile browsers -->
+  <meta name="theme-color" content="#6c0f98">
+
   <style>
-    :root {
-      --brand: #6c0f98;
-    }
-    html, body {
-      height: 100%;
-      margin: 0;
-      background: #fff;
-    }
+    :root { --brand: #6c0f98; }
+    html, body { height: 100%; margin: 0; background: #fff; }
 
     /* 3-column grid: tagline | logo | email */
     body {
@@ -25,11 +33,16 @@
       min-height: 100vh;
     }
 
+    /* Center animated logo */
     .logo {
       grid-column: 2;
-      width: clamp(280px, 36vw, 520px);  /* responsive size */
+      width: clamp(280px, 36vw, 520px);
       height: auto;
       display: block;
+      background: #fff;
+      object-fit: cover;
+      object-position: center;
+      clip-path: inset(1px 0 1px 0); /* trims 1px top & bottom to hide faint lines */
     }
 
     .side-text {
@@ -40,21 +53,9 @@
       text-align: center;
     }
 
-    .tagline {
-      grid-column: 1;
-      justify-self: end;
-      text-transform: lowercase;
-    }
-
-    .email {
-      grid-column: 3;
-      justify-self: start;
-    }
-
-    .email a {
-      color: var(--brand);
-      text-decoration: none;
-    }
+    .tagline { grid-column: 1; justify-self: end; text-transform: lowercase; }
+    .email   { grid-column: 3; justify-self: start; }
+    .email a { color: var(--brand); text-decoration: none; }
     .email a:hover { text-decoration: underline; }
 
     /* Stack vertically on small screens */
@@ -71,16 +72,12 @@
     for the treasure valley
   </div>
 
-  <!-- Center animated logo -->
-  <picture class="logo">
-    <!-- Prefer WebP (smaller) -->
-    <source srcset="logovid.webp" type="image/webp">
-    <!-- Fallback: looping video -->
-    <video autoplay loop muted playsinline class="logo">
-      <source src="logovid.mp4" type="video/mp4">
-      Your browser does not support animated logos.
-    </video>
-  </picture>
+  <!-- Center animated logo: WebM first, MP4 fallback -->
+  <video class="logo" autoplay loop muted playsinline preload="auto">
+    <source src="logovid.webm" type="video/webm">
+    <source src="logovid.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
   <!-- Right side email -->
   <div class="side-text email">
