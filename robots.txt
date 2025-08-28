@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://www.happytrashy.com/sitemap.xml
